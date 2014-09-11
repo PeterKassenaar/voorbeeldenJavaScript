@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cursus JavaScript - events </title>
+    <script>
+        // wrappen in een window.onload function om knop goed te laten werken.
+        window.onload = function () {
+            // of: window.addEventListener('DOMContentLoaded', function(){
+            var button = document.getElementById('btnHello');
+            button.addEventListener(
+                'click', 				// eerste argument
+                function () { 			// tweede argument
+                    alert('Hello!');
+                },
+                false);					// derde argument (bubbling/capturing)
+        };
+    </script>
+</head>
+<body>
+    <div id="container">
+        <button id="btnHello">Say Hello!</button>
+    </div>
+</body>
+</html>

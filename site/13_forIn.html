@@ -1,0 +1,34 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - template </title>
+<script>
+// variabelen
+var bericht ='';
+var i;
+var mijnObject = {
+		breedte: 6, 
+		lengte : 5, 
+		calc : function()
+			{ return this.breedte * this.lengte;}
+}
+for (i in mijnObject){
+	bericht += (i + ': ' + mijnObject[i]+ '\n');	// haakjes zijn hier niet verplicht, maar maken het leesbaarder.
+}
+
+var fruit = ['appel', 'peer', 'banaan'];
+
+for (var j in fruit){
+	console.log(j + ': ' + fruit[j]);	
+}
+
+alert (bericht);
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+

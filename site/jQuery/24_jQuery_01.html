@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - jQuery template </title>
+<style>
+p{
+	min-height:100px;
+	background-color:#FC6;
+}
+</style>
+<script src="../scripts/jquery-1.7.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	$('#btnHide').click(function(){
+		$('p').fadeOut('slow');
+		
+	});
+});
+
+</script>
+</head>
+
+<body>
+<h2>Dit is een koptekst</h2>
+<p>Dit is de eerste paragraaf</p>
+<p>Dit is de tweede paragraaf</p>
+<p>Dit is de derde paragraaf</p>
+<button id="btnHide">Laat de paragrafen verdwijnen!</button>
+</body>
+</html>
+
+

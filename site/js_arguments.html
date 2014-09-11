@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript arguments array</title>
+</head>
+<body>
+	<h1>JavaScript arguments array</h1>
+	<h2>'Javascript arguments pattern'</h2>
+	<p>Look in Dev Tools Console</p>
+	<!-- Script below here -->
+	<script>
+		function argumentsPatternFunction(){
+			// Arguments Pattern: arguments is geen 'echte' array
+
+			console.log('Array.isArray(arguments): ' , Array.isArray(arguments));		
+			var args = Array.prototype.slice.call(arguments);	
+			console.log('Array.isArray(args): ' , Array.isArray(args));		
+			console.log('aantal argumenten: ' + arguments.length);
+			console.log('Argumenten: ' + args);
+		}
+
+		argumentsPatternFunction('a', 'b', 'c', 'd', 'e');
+
+		argumentsPatternFunction
+		('Hello', 'World', 15, { name: 'Peter '});
+		
+
+		
+		
+	</script>
+</body>
+</html>

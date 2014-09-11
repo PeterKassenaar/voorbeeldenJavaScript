@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript call() en apply()</title>
+</head>
+<body>
+	<script>
+		// 1. Define a simple object
+		var car = {
+			name: 'car',
+			showWheels: function (numWheels) {
+				console.log('A ' + this.name + ' has ' + numWheels + ' wheels');
+			}
+		};
+
+		// 2. Directly invoke showWheels() on the car object
+		car.showWheels(4);
+
+
+		// 3. Define another object
+		var truck = {
+			name: 'Mighty Highway Thunder'
+		}
+
+
+
+		// 4. call the showWheels function on the car object, with the truck
+		// 	object as *context* (i.e. the 'this' keyword in car, now applies
+		// 	to the truck object.
+		car.showWheels.call(truck, '16');
+
+
+		// 5. Do the same thing, but now using apply (which takes an array as
+		// 	the second argument to pass into the called function)
+		car.showWheels.apply(truck, ['24']);
+
+	</script>
+</body>
+</html>

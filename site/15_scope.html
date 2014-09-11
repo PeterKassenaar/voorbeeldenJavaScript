@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Scope</title>
+    <script>
+        // variabele 'a' heeft global scope
+        var a = 'Hello world';
+
+        // functiedefinitie
+        function testFunction() {
+            console.log(a);
+
+            if (true) {
+                var x = 15;
+            }
+            // local scope
+            var b = 'Hello Groningen';
+            console.log(b);
+
+            c = 'Hello Hoogeveen';
+
+            function innerTest() {
+                console.log(b);
+                console.log(c);
+                console.log(x);
+            };
+
+            //innerTest();
+        }
+        testFunction();
+        console.log(a);
+        //console.log(b); // error, undefined
+        console.log(c); // idem
+        
+    </script>
+</head>
+
+<body>
+<h1>Test van scope (zie console)</h1>
+</body>
+</html>

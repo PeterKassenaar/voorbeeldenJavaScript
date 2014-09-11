@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Defining a Namespace</title>
+    <script>
+        //The total variable will be added to the window object
+        var total = 50;
+        alert(window.total);
+
+        //Take variables and functions out of the global scope
+        //by wrapping them in an outer function
+        (function () {
+            var total = 50;
+            alert(total);
+            alert(window.total);
+        })();
+
+        //A namespace is in the global scope but acts as a container
+        //for variables and functions
+        var acmeCorp = acmeCorp || {};
+        acmeCorp.engine = 'V8';
+        acmeCorp.start = function () {
+            alert('Truck started ' + acmeCorp.engine);
+        };
+        acmeCorp.stop = function () {
+            alert('Truck stopped');
+        };
+       
+        acmeCorp.start();
+        acmeCorp.stop();
+        alert(window.engine);
+
+        (function () {
+            var acmeCorp = acmeCorp || {};
+            acmeCorp.engine = 'V6';
+            acmeCorp.start = function () {
+                alert('Truck started ' + acmeCorp.engine);
+            };
+            acmeCorp.stop = function () {
+                alert('Truck stopped');
+            };
+
+            acmeCorp.start();
+            acmeCorp.stop();
+            alert(window.engine);
+        })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

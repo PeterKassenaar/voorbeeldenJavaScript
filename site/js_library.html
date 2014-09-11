@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Een eigen jQuery-like JS library</title>
+</head>
+<body>
+	<h2>Slim - een simpele library voor het DOM</h2>
+	<script>
+		// SLIM a small jQuery like utility library to manipulate the DOM, as a demonstration on 
+		// how to build your own JS-library w/ some small sample functions.
+		// Credits: http://net.tutsplus.com/tutorials/javascript-ajax/build-your-first-javascript-library/
+		// Peter Kassenaar, info@kassenaar.com, nov. 2013
+		// 
+		window.slim = (function () {
+			// constructor
+			function Slim(els) {
+				// wrapping the elements in an object
+				for (var i = 0 ; i < els.length; i++) {
+					this[i] = els[i];
+				}
+				this.length = els.length;
+			}
+
+			var slim = {
+				// get function to select elements in the DOM
+				get: function (selector) {
+					var els;
+					if (typeof selector === 'string') {
+						els = document.querySelectorAll(els);
+					} else if (selector.length) {
+						els = selector;	// if it's not string, if it has a .length-property, els is a NodeList
+					} else {
+						els = [selector];
+					}
+					return new Slim(els)
+				}
+
+			}
+
+			//***************************
+			// Utilities
+			//***************************
+			// map function to iterate over (multiple) DOM-elements
+			Slim.prototype.map = function (callback) {
+				var results = [], i = 0;
+				for (; i < this.length; i++) {
+					results.push(callback.call(this, this[i], i));
+				}
+				return results;
+			};
+
+			Slim.prototype.forEach(callback) {
+				this.map(callback);
+				return this;
+			};
+
+			Slim.prototype.mapOne = function (callback) {
+				var m = this.map(callback);
+				return m.length > 1 ? m : m[0];
+			};
+
+			//***************************
+			// Working w/ text and HTML
+			//***************************
+			// hier verder, stap 5.
+
+			return slim;
+		})();
+
+	</script>
+</body>
+</html>

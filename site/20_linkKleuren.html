@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - Linkkleuren </title>
+<style>
+/* Voor betere zichtbaarheid van het resultaat in de browser
+	even een goede zichtbaarheid instellen.
+*/
+a{
+	font-size: x-large;
+	font-weight: bold;	
+}
+</style>
+<script>
+// Oefening: Kleuren van hyperlinks veranderen
+// variabelen
+var linkColors = ['green', 'red', 'yellow', 'silver', 'white'];
+var currentColor = 0;
+
+window.onload=function(){
+	var btn = document.getElementById('btnChangeLinks');
+	btn.addEventListener(
+		'click', 				// eerste argument
+		changeLinks,			// tweede argument: functieaanroep
+		false);					// derde argument
+};
+
+// Event handler
+function changeLinks(e){
+	var links = document.getElementsByTagName('a'); // links bevat een NodeList-object (zie p. 367, boek)
+	
+	// Loop over alle elementen in de NodeList
+	for(var i = 0 ; i < links.length; i++)
+	{
+		links[i].style.backgroundColor = linkColors[currentColor];
+	}
+	
+	// test of de huidige kleur binnen bereik van array valt. Anders: reset.
+	if(++currentColor >= linkColors.length){
+		currentColor = 0;
+	}
+}
+
+</script>
+</head>
+<body>
+<p>
+Lorem ipsum <a href="#">dolor sit amet</a>, consectetur adipiscing elit. Aenean in eros urna. Ut posuere ultrices sagittis. In pellentesque, libero sed convallis facilisis, lacus quam malesuada tellus, at condimentum felis sem quis ligula. Sed eu felis nec massa porttitor fermentum. Cum sociis natoque<a href="#"> penatibus et magnis dis parturient</a> montes, nascetur ridiculus mus. Suspendisse commodo, nulla et aliquet ullamcorper, massa nibh viverra enim, sit amet tincidunt velit purus eu ipsum. Cras ut tellus non elit interdum rhoncus. Sed tellus nunc, rhoncus vel semper vitae, vehicula sit amet nunc. Pellentesque id erat et justo convallis <a href="#">dignissim vitae at justo</a>. Phasellus rutrum sem ac nibh condimentum ac vestibulum justo vehicula. Sed lobortis neque accumsan libero sollicitudin quis pulvinar tortor aliquet. </p>
+
+<p><button id="btnChangeLinks">Verander Linkkleuren</button></p>
+
+</body>
+</html>
+

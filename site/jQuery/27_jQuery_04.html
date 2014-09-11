@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - jQuery template </title>
+<style>
+.voorwaarden{
+	width:450px;
+	min-height:150px;
+	background-color:#FFC;
+	border: 1px solid #888;
+	display:none;
+}
+
+</style>
+<script src="../scripts/jquery-1.7.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	var koptekst = '<h2>Hello World</h2>';
+	$('#tekst').html(koptekst);
+	//$('#tekst').text(koptekst);
+	
+	// Bij klik op de knop, waarde uit tekstveld halen
+	$('#mijnKnop').on('click', function(){
+		//.....
+	});
+});
+
+</script>
+</head>
+
+<body>
+<input id="naam"><button id="mijnKnop">Klik hier</button>
+<div id="tekst">
+</div>
+<div id="result">
+
+</div>
+</body>
+</html>
+
+

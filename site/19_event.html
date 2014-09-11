@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - events </title>
+<script>
+// Voorbeeld: tekstinvoer in tekstveld afvangen
+window.onload=function(){
+	var txt = document.getElementById('txtName');
+	txt.addEventListener(
+		'keypress', 			// eerste argument
+		handleKey,				// tweede argument: functieaanroep
+		false);					// derde argument, capturing/bubbling
+};
+
+// Event handler
+function handleKey(e){
+	var keyCode = e.which;
+	var alinea = document.getElementById('keyCodes');
+	alinea.innerHTML += ', '+ keyCode;
+}
+
+</script>
+</head>
+<body>
+
+<div id="container">
+	<input type="text" id="txtName" />
+	<p>Code(s) van de toetsen: </p>
+	<p id="keyCodes"></p>
+</div>
+
+</body>
+</html>
+

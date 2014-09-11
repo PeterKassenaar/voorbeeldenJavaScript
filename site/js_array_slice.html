@@ -1,0 +1,27 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Slice en Splice in JavaScript</title>
+</head>
+<body>
+	<h1>Kijk in de developer console</h1>
+	<script>
+		// De oorspronkelijke array
+		var days = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo'];
+		console.log('Oorspronkelijke array: ', days);
+
+
+		// SPLICE - oorspronkelijke array wordt gemuteerd
+		var alleenVrijdag = days.splice(4, 1);
+		// Vrijdag is nu 'uit'  days[] gelift.
+		//console.log(days);
+		//console.log(alleenVrijdag);
+
+		// SLICE - begin en eindwaarde instellen, oorspronkelijke array ongewijzigd.
+		var weekend = days.slice(5, 7);
+
+
+	</script>
+</body>
+</html>

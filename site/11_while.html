@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cursus JavaScript - template </title>
+	<script>
+		// variabelen
+		var aantal = 1;
+		var bericht = '';
+
+		// 1. while-lus
+		while (aantal < 10) {
+			bericht += ', ' + aantal;	// iets doen met de teller
+			aantal++;					// teller ophogen!
+		}
+		alert('totaal: ' + bericht);
+
+
+		// 2. do-while lus
+		bericht = '';	// reset
+		do {
+			bericht += ', ' + aantal;
+			aantal--;
+		} while (aantal > 0);
+		alert('totaal: ' + bericht);
+
+	</script>
+</head>
+
+<body>
+</body>
+</html>

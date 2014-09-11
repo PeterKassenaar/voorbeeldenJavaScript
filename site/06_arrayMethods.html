@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Methods voor arrays</title>
+	<script>
+		// Verschillende notatiewijzen voor arrays
+
+		// 1. Array definieren
+		var mijnArray = ['druif', 'Banaan', 'peer', 'appel' ];
+		
+
+		// join()
+		var fruit = mijnArray.join('-----');
+		console.log(fruit);
+
+		//console.log(mijnArray.toString());
+
+		// reverse()
+		console.log(mijnArray.reverse());
+
+
+		// sort()
+		//var naamArray = [{ naam: 'Olga' }, { naam: 'Karin' }, { naam: 'Frank' }, { naam: 'Jimi' }];
+
+		var sorteren = mijnArray.sort();
+		console.log(sorteren);
+
+
+		// uitgebreid sorteren, met een eigen .sort()-functie (case insensitive in dit geval)
+		var sorteren2 = mijnArray.sort(
+			function (a, b) {
+				console.log('a: ', a);
+				console.log('b: ', b);
+
+				if (a.toLowerCase() < b.toLowerCase()) return -1;
+				if (a.toLowerCase() > b.toLowerCase()) return 1;
+				return 0;
+			}
+		);
+		console.log(sorteren2);
+
+
+		// concat()
+		//var mijnArray2 = ['perzik', 'sinaasappel', 'kiwi'];
+		//var mijnArray3 = new Array();
+		//mijnArray3 = mijnArray3.concat(mijnArray, mijnArray2);
+		//console.log(mijnArray3);
+
+
+	</script>
+</head>
+<body>
+	<h1>Array Methods - kijk in Dev Tools Console</h1>
+</body>
+</html>

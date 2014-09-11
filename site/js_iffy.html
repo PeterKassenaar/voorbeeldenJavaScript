@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cursus JavaScript - IIFE's (iffy)</title>
+	<script>
+		// Immediately Invoked Function Expression -
+		// wordt uitgevoerd zodra hij is gedefinieerd.
+		// Meer info: http://benalman.com/news/2010/11/immediately-invoked-function-expression/
+
+		// 1. Standaardnotatie. Geen automatische uitvoering van functie
+		function myFunc1(parameter1) {
+			console.log('myFunc1 is uitgevoerd: ', parameter1);
+			// do other useful stuff
+		};
+
+		// 1a. Functie aanroepen (zie console);
+		myFunc1('Hello World');
+
+		
+		// 2. Functies kun je aanroepen met (). Dus dit zal ook goed gaan?
+		//function myFunc2(parameter2){
+		//	console.log('myFunc2 is uitgevoerd: ', parameter2);
+		//	// do other useful stuff
+		//}(); // Nee. SyntaxError: Unexpected token )
+
+		
+		
+		// 3. Maar wel als je haakjes om de functiedefinitieplaats: Immediately invoked
+		//(function myFunc3(plaats){
+		//	console.log('myFunc3 is uitgevoerd!: ', plaats);
+		//	// do other useful stuff
+		//})('Amsterdam'); // <==== IIFE
+		
+
+		// 4. Dit principe kom je veel tegen in libraries die direct/zichzelf
+		// moeten initialiseren. Bijvoorbeeld
+		//var myLib = (function () {
+		//	this.name =  'Peter Kassenaar';
+		//	this.greet = function () {
+		//		console.log('Hello', this.name);
+		//	}
+		//	return this;
+		//})(); // iffy. myLib is nu direct en overal beschikbaar.
+
+	
+		//myLib.greet();
+
+	</script>
+</head>
+<body>
+	<h1>IIFE (iffy)</h1>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript swithc () statement</title>
+</head>
+<body>
+	<h1>JavaScript switch() statement</h1>
+	<p>Look in Dev Tools Console</p>
+	<!-- Script below here -->
+	<script>
+		function getPrice(item)
+		 {
+		 	var price = 0;
+			var extendedPrice = 0;
+		 	switch(item) {
+		 		case"apple": price = 1.25;
+				extendedPrice=1; break;
+		 		case"banana": price = 0.75; break;
+		 		case"orange": price = 1; break;
+		 		case"passionfruit": price = 1.5;
+		 		case"pear": price = 0.5; break;
+		 		default: price = 0;}
+		 		return price;
+		 	}
+
+		console.log(getPrice("passionfruit")); // 0.5???
+	</script>
+</body>
+</html>

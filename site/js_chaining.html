@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+
+	<script>
+		// Chaining Design Pattern
+		var Calculator = function (getal) {
+			var totaal = 0;
+			if (getal) {
+				totaal += getal;
+			}
+			this.add = function (a) {
+				totaal += a;
+				console.log('optellen: ' + a + ', totaal is nu ' + totaal);
+
+
+				//return this; // return 'this' om chaining mogeljk te maken.
+			}
+			this.subtract = function (a) {
+				totaal -= a;
+				console.log('aftrekken: ' + a + ', totaal is nu ' + totaal);
+
+
+				//return this; // return 'this' om chaining mogeljk te maken.
+			}
+		}
+
+		var mijnCalc = new Calculator();
+		// chaining
+		mijnCalc.add(4).add(5).add(10).subtract(5);
+
+	</script>
+</head>
+<body>
+	<h1>javaScript chaining pattern (in Dev tools Console)</h1>
+</body>
+</html>

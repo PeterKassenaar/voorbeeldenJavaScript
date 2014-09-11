@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cursus JavaScript - functions </title>
+    <!-- eventueel extra library moment.js gebruiken
+        voor het werken met data -->
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        // 0. tijdstip berekenen.
+        var nu = new Date();
+        var begroeting = '';
+        var uur = nu.getHours();
+
+        if (uur < 6) {
+            begroeting = 'goedenacht ';
+        }
+        else if (uur < 12) {
+            begroeting = 'goedemorgen ';
+        }
+        else if (uur < 18) {
+            begroeting = 'goedenmiddag ';
+        } else {
+            begroeting = 'goedenavond';
+        }
+
+        var bericht = begroeting + 'bezoeker! Welkom op deze site';
+
+        //1. element maken
+        var alinea = document.createElement('p');
+
+        //2. tekst binnen element maken
+        var textNode = document.createTextNode(bericht);
+
+        //3. tekst toevoegen aan element
+        alinea.appendChild(textNode);
+
+        //4. element toevoegen aan pagina
+        var mijnDiv = document.getElementById('div1')
+        mijnDiv.appendChild(alinea);
+
+    </script>
+</body>
+</html>

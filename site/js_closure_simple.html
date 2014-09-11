@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Using Functions</title>
+	<link href="css/Styles.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		window.onload = function () {
+			//Using a closure
+			var output = document.getElementById('Output'),
+				closure = myClosure();
+			output.innerHTML = closure();
+			var nieuweClosure = myClosure();
+			//output.innerHTML += closure.getName();
+
+			// first call
+			//output.innerHTML += '<br><br>' + myClosure2.mijnFunctie();
+
+			// second call (variable value for milliseconds remains unchanged)
+			setTimeout(function () {
+				output.innerHTML += '<br><br>' + closure();
+				//output.innerHTML += '<br><br>' + myClosure2.mijnFunctie();				
+			}, 2500);
+		};
+
+		//1. standard function - not a closure (NOT used in this code example any further, just here for reference)
+		function myNonClosure() {
+			//variable will not be stored in a closure between calls
+			//to the myNonClosure function
+			var date = new Date();
+			return date.getMilliseconds();
+		}
+		
+
+		//2. closure example 
+		function myClosure() {
+			//date will be stored in the closure
+			//due to the function referencing it
+			var date = new Date();
+			
+			return function () {
+				var otherDate = new Date();
+				return "Closure variable value for <em>date</em> milliseconds: <span class='blue'>" +
+						date.getMilliseconds() +
+						"</span><br>Non closure variable value for <em>otherDate</em> milliseconds: <span class='red'>" +
+						otherDate.getMilliseconds()	;
+
+			};
+		}
+		/*
+		// 3. Other closure example, slightly different notation/syntax (using the revealing module pattern)
+		var myClosure2 = function () {
+			var date = new Date(),
+				myNestedFunc = function () {
+					return "Closure for myNestedFunc: " + date.getMilliseconds();
+				};
+			return {
+				// Public API 
+				mijnFunctie: myNestedFunc,
+			};
+		} (); 
+		*/
+	</script>
+</head>
+<body>
+	<div>
+		<h1>A simple demo of using a closure</h1>
+		Note that the date variable milliseconds shown
+		is the same across calls to the myClosure() function in the code.
+		This is due to a "closure" being created that keeps the variable alive
+		across function calls.
+		<br />
+		<br />
+		<div id="Output"></div>
+	</div>
+</body>
+</html>

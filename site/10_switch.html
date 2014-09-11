@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cursus JavaScript - template </title>
+	<script>
+		var waardering = 4; // aantal 'sterren' bij waardering, 1-5
+		var bericht = '';
+
+		switch (waardering) {
+			case 1: {
+				bericht = 'Waardeloos';
+				break;
+			}
+			case 2: {
+				bericht = 'Mwaa....';
+				break;
+			}
+			case 3: {
+				bericht = 'De moeite waard';
+				break;
+			}
+			case 4: {
+				bericht = 'Prima!';
+				break;
+			}
+			case 5: {
+				bericht = 'Perfect, kan niet beter!';
+				break;
+			}
+			default: {
+				bericht = 'Onbekende waardering...';
+				break;
+			}
+		}
+		alert('Uw waardering: ' + bericht);
+
+	</script>
+</head>
+
+<body>
+</body>
+</html>

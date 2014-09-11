@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - Ajax POST via FormData</title>
+<script>
+window.onload=function(){
+	document.getElementById('btnRequest').addEventListener('click', handleClick, false);
+	
+}
+
+// de klik op de knop omzetten in een Ajax-request
+function handleClick(event){
+	// 1. variabelen instellen
+	var myDiv = document.getElementById('myDiv');
+	var request = new XMLHttpRequest();
+	var method = 'POST';
+	
+	var formInputs = document.getElementsByTagName('input')
+	
+	// Over alle input elementen loopen
+	var arrData=[];
+	for(var i = 0, j = formInputs.length; i < j; i++){
+		arrData.push(formInputs[i].name + '=' + formInputs[i].value);	
+	}
+	console.log(arrData.join('&'));
+	var formData = arrData.join('&');
+	
+	var url = 'ajaxData.php';
+	request.open(method, url);
+	request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	
+	// 2. callback-functie instellen
+	request.onreadystatechange = function(){
+		// Div op de pagina leegmaken
+		myDiv.innerHTML = '';
+		// testen of request compleet is en succesvol
+		if(request.readyState == 4 && request.status == 200){
+			// test of er JSON teruggegeven wordt
+			 var type = request.getResponseHeader("Content-Type");
+			 if(type  == 'application/json'){
+				 // omzetten naar JSON-object
+				var content = JSON.parse(request.responseText);
+				
+				// over het object lopen en tonen in de UI
+				for (var i in content){
+					myDiv.innerHTML += '<strong>' + i + '</strong>: ' + content[i] + '<br />';
+				}
+			 }
+		}
+	}
+	
+	// 3. request verzenden
+	request.send(formData);
+}
+
+</script>
+</head>
+
+<body>
+<button id="btnRequest">Start Ajax Request</button>
+<div id="myDiv"></div>
+<form id="form1">
+Naam: <input type="text" id="naam" name="naam" /><br />
+Woonplaats: <input type="text" id="woonplaats" name="woonplaats" />
+</form>
+</body>
+</html>
+

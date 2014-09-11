@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cursus JavaScript - functions </title>
+	<script>
+		//function kwadraat(x) {
+		//	return x * x;
+		//}
+		//var getal = 3;
+		//alert('Het kwadraat van ' + getal + ' is ' + kwadraat(getal));
+
+
+		function menuLijst() {
+			var result = '<div>\n\t<ul>';
+
+			for (var i = 0 ; i < arguments.length; i++) {
+				result += '\n\t\t<li>' + arguments[i] + '</li>';
+			}
+
+			result += '\n\t</ul>\n</div>';
+			return result;
+		}
+
+		var lijst = menuLijst('Home', 'About', 'Products', 'Contact', 'FAQ');
+		console.log(lijst);
+
+
+	</script>
+</head>
+
+<body>
+</body>
+</html>

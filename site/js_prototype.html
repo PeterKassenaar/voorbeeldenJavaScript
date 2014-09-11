@@ -1,0 +1,123 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript - extending objects via prototype</title>
+</head>
+
+<body>
+	<h2>Prototype - see console</h2>
+	<script>
+		//***************************************
+		// Twee voorbeelden van het gebruik van de prototype property om
+		// objecten uit te breiden met nieuwe mogelijkheden.
+		// 1. Breidt het ingebouwde object Array() uit via property
+		// 2. Breidt een eigen object uit via property
+		//******************************************
+		console.group('Example1');
+		var myArr = ['apple', 'apricot', 'pear', 'orange', 'banana', 'almond'];
+		// 1. Toon het eerste element van de array in de console. Simple
+		console.log('myArr[0] : ', myArr[0]);
+
+		// 2. Maar wat nu als we dit zouden willen doen via een .first() method? Die bestaat niet in Array().
+		// Oplossing: uitbreiding Array-object met method first() via prototype
+		if (!Array.prototype.first) {
+			Array.prototype.first = function () {
+				return this[0];
+			};
+		}
+
+
+
+		// 2a. Nu kunnen we ook de (eigen) method gebruiken om het eerste element op te vragen.
+		console.log('myArr.first(): ', myArr.first());
+
+		/*
+
+		// 3. Idem, uitbreiding Array-object met method last() via prototype
+		if (!Array.prototype.last) {
+			Array.prototype.last = function () {
+				var i = this.length;
+				return this[i - 1];
+			};
+		}
+
+		console.log('myArr.last(): ', myArr.last());
+
+
+
+		// 4. Iets ingewikkelder, uitbreiding Array-object met method startsWith() via prototype
+		if (!Array.prototype.startsWith) {
+			Array.prototype.startsWith = function (char) {
+				if (!char) {
+					return;
+				}
+				var helperArr = [];
+				for (var i = 0; i < this.length; i++) {
+					if (this[i].substring(0, char.length) === char) {
+						helperArr.push(this[i]);
+					}
+				}
+				if (helperArr.length > 0) {
+					return helperArr;
+				} else {
+					return;
+				}
+			};
+		}
+
+		// 5. Kan potentieel gevaarlijk zijn! Je kunt originele array-methods overriden met je eigen implementatie.
+		// Bijvoorbeeld de Array.join() function, die dan niet meer werkt (!)
+
+		Array.prototype.join = function join() {
+			console.log('hello world');
+		}
+
+
+		// Check new functions (added via prototype)
+		console.log('myArr.first(): ', myArr.first());
+		console.log('myArr.last(): ', myArr.last());
+		var x = myArr.startsWith('a');
+		console.log('myArr.startsWith("a")', x);
+		console.log(['test 1', 'test2', 'test3'].join()); // 'hello world'
+
+		console.groupEnd();
+		/*
+		//*********************************
+		// Prototype gebruiken voor eigen objecten
+		//*********************************
+		console.group('Example 2');
+		// 1. Maak class. Convention: start classname met Hoofdletter
+		function Player(name){
+		this.name = name;
+		this.score = 0;
+		this.increaseScore = function(number){
+			this.score += number;
+			console.log(  this.name + '\'s score: ' + this.score + ' points');
+		}
+		}
+
+// 2. Maak instanties van de class
+	var p1 = new Player('Peter'	);
+	var p2 = new Player ('Sandra');
+	p1.increaseScore(3);
+	p2.increaseScore(5);
+
+
+
+	// 3. Stel dat wel later/elders een extra functie moeten toevoegen aan
+	// de Player-class. Doe dit via prototype
+Player.prototype.penalty = function(number){
+	this.score -= number;
+	console.log(  this.name + '\'s score is now: ' + this.score + ' points, after recieving a ' + number + ' point penalty');
+}
+
+	// 4. Geef player(s) een penalty
+p1.penalty(2);
+p2.penalty(1);
+
+			console.groupEnd();
+			*/
+	</script>
+</body>
+</html>

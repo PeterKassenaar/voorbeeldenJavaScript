@@ -1,0 +1,66 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript inheritance example</title>
+</head>
+
+<body>
+<h1>JavaScript inheritance, see console</h1>
+
+<script>
+// credits: http://www.youtube.com/watch?v=pu08qQCmw8I
+
+// parent class. Convention: classes start with Uppercase 
+function ParentClass(){
+	this.parentProp1 = null;
+	this.parentMethod1 = function (arg1){
+		return arg1 + 'parent method 1 return data';	
+	}
+}
+
+
+//child class
+function ChildClass(){
+	this.childProp1 = 'Goodbye';
+	this.childMethod1 = function (arg1){
+		return arg1 + 'Child method 1 return data';	
+	}
+	this.parentProp1 = 'Hello';
+}
+
+function ChildClass2() {
+	this.parentProp1 = 'Hello Amsterdam';
+}
+
+// make the child class inherit all parent class characteristics by
+// using prototype property.
+ChildClass.prototype = new ParentClass();
+ChildClass2.prototype = new ParentClass();
+
+
+// instantiate class
+var instance1 = new ChildClass();
+var instance2 = new ChildClass2();
+
+// check to see if instance1 is an instance of both objects
+console.log(instance1 instanceof ParentClass);
+console.log(instance1 instanceof ChildClass);
+
+// access the instance methods and properties in both (Parent + Child) classes
+console.log(instance1.parentMethod1('Result: '));
+console.log(instance1.childMethod1('Result: '));
+console.log(instance1.parentProp1);
+console.log(instance1.childProp1);
+
+// if desirable, you can override the parent methods. 
+// Again, use prototype
+ChildClass.prototype.parentMethod1 = function parentMethod1(arg1){
+	return arg1 + 'Hello Haarlem';
+}
+
+console.log(instance1.parentMethod1('Result override: '));
+
+</script>
+</body>
+</html>

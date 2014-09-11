@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Return function</title>
+</head>
+
+<body>
+
+<script>
+// Definieer een functie die een functie retourneert
+function myFunc(a){
+	return function(a){
+		return a + a;	
+	}
+}
+
+// ken de functie toe aan x
+var x = myFunc();
+
+// roep x aan
+console.log(x(10));
+
+
+</script>
+</body>
+</html>

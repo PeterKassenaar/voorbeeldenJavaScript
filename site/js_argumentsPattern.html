@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript Arguments Pattern</title>
+</head>
+<body>
+	<h1>JavaScript Arguments Pattern</h1>
+	<p>Look in Dev Tools console</p>
+	<script>
+		function argumentsPattern() {
+			// Eenvoudige functie die alle argumenten bij
+			// elkaar optelt en retourneert volgens het Arguments Pattern.
+			// Beperkte foutcontrole op isNaN().
+			var totaal = 0;
+
+
+			for (var i = 0; i < arguments.length; i++) {
+				if (isNaN(arguments[i])) {
+					arguments[i] = 0;
+					//return 'ERROR: Niet goede argument type'
+				}
+				totaal += arguments[i];
+			}
+			return totaal;
+		}
+
+		console.log('Totaal: ', argumentsPattern(1, 2, 3, 10, 39));
+	</script>
+</body>
+</html>

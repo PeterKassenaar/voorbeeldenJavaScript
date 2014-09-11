@@ -1,0 +1,47 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mijn kleine library</title>
+</head>
+<body>
+	<h1 id="koptekst">Koptekst</h1>
+	<script>
+		// Mijn helper library
+		var $ = (function () {
+ 
+			// private
+			var get = function(_el){
+				return	document.querySelector(_el);
+			};
+
+			var hide = function(_el){
+				document.querySelector(_el).style.display='none';
+			};
+
+			var show = function (_el) {
+				document.querySelector(_el).style.display = 'block';
+			};
+
+
+			// public
+			return{
+				get: get,
+				hide: hide,
+				show: show
+			};
+		})(); // <=== Iffy notatie
+		
+		var kop = $.get('#koptekst');
+		//var x = new $();// onzin
+		
+
+	
+		console.log(kop);
+		// koptekst na 2,5 seconden verbergen.
+		setTimeout(function(){
+			$.hide('#koptekst');
+		}, 2500);
+	</script>
+</body>
+</html>

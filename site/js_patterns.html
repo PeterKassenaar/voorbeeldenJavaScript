@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript patterns</title>
+	<!-- Zoals besproken door Dan Wahlin, tijdens sessie
+		'clean up your Javascript-code',
+		28-10-2013, #anglebrackets, Las Vegas.
+		Drie patronen, met de volgende doelstellingen:
+			- don't pollute the global namespace
+			- create reusable code
+			- create modular code
+			- create (some kind of) private/public variables
+	 -->
+</head>
+<body>
+	<script>
+		// *********************
+		// 1. Prototype pattern
+		// *********************
+		//  1a. Definieer class/object. Convention: classes start w/ Uppercase
+		
+		var Car = function (engine) {
+			this.engine = engine;
+		}// <== Dit is de constructor
+
+		// 1b. Object uitbreiden via prototype en object literal
+		Car.prototype = {
+			start: function () {
+				alert('Car started : ' + this.engine);
+			},
+			stop: function () {
+				alert('Car stopped : ' + this.engine);
+			}
+		};
+
+		// 1c. Andere notatiewijze (meer code typen, zelfde resultaat)
+		 //Car.prototype.start = function(){...} ;
+		 //Car.prototype.stop = function(){...};
+		 //Car.prototype.xyz = function(){...}
+
+		// 1d. Instantieren van het Car object
+		var car1 = new Car('V8');
+		car1.start();
+		car1.stop();
+
+		
+		/*
+		// *********************
+		// 2. Revealing module pattern
+		// *********************
+		var car = (function(engine){
+			// 2a. private
+			var _engine = engine,
+				_start = function(){
+					alert('Car started : ' + _engine);
+				},
+				_stop = function (){
+					alert('Car stopped : ' + _engine);
+				};
+
+
+			// 2b. public
+			return{
+				start : _start,
+				stop: _stop
+			}
+		})('V12'); // self invoking/iffy
+
+		car.start();
+		car.stop;
+		*/
+		/*
+		// *********************
+		// 3. Revealing prototype pattern
+		// *********************
+		var Car = function (engine) {
+			this.engine = engine;
+		}
+
+		Car.prototype = function () {
+			// 3a. private
+			var start = function () {
+				alert('Car started : ' + this.engine);
+			},
+				stop = function () {
+					alert('Car stopped : ' + this.engine);
+				};
+
+			// 3b. public
+			return {
+				start: start,
+				stop: stop
+			}
+		}();
+
+		var car2 = new Car('V16');
+		car2.start();
+		car2.stop();
+		*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - functions </title>
+<style>
+.opmaak{
+	border: 1px solid #999;
+	padding: 10px;
+	margin: 10px;
+	background-color:#CC9933;	
+}
+.grijs{
+	background-color:#ccc;	
+}
+
+.geel{
+	background-color: #FFC;	
+}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="div1" class="opmaak">Dit is een div met een tekst er in </div>
+</div>
+<script>
+//1. element vinden en klonen 
+	var element = document.getElementById('div1');
+
+// Andere manier:
+//var element  = document.querySelectorAll('div');
+
+var elementClone = element.cloneNode(true); // true: klonen inclusief eventule child-nodes. False: alleen hoofd-element klonen
+
+//1. element toevoegen aan container
+var container = document.getElementById('container');
+container.appendChild(elementClone);
+
+
+ 
+// 2. Het id aanpassen om dubbele id's te voorkomen
+elementClone.setAttribute('id', 'div2');
+elementClone.classList.add('grijs');
+
+
+var newLink = document.createElement('a');
+newLink.href = "http://www.google.com";
+newLink.innerHTML = "Naar Google";
+document.body.appendChild(newLink);
+
+newLink.innerHTML = 'Naar Bing';
+document.body.appendChild(newLink);
+</script>
+
+</body>
+</html>
+

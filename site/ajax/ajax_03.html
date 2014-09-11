@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - Basic Ajax </title>
+<script src="../scripts/jquery-1.7.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	$('#btnRequest').on('click', handleClick);
+});
+
+// de klik op de knop omzetten in een Ajax-request
+function handleClick(event){
+	// 1. variabelen instellen
+	$.getJSON('ajaxData.php',{}, function(data){
+		// over het object lopen en tonen in de UI
+		for (var i in data){
+			myDiv.innerHTML += '<strong>' + i + '</strong>: ' + data[i] + '<br />';
+		}
+	});	
+}
+
+</script>
+</head>
+
+<body>
+<button id="btnRequest">Ajax Request via jQuery</button>
+<div id="myDiv"></div>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - events </title>
+<style>
+
+</style>
+<script>
+// Oefening: Validatie. Een textarea mag niet meer dan xx-tekens bevatten.
+// variabelen
+var aantalTekens = 100; // de drempelwaarde 
+
+window.onload=function(){
+	var txt = document.getElementById('txtBericht');
+	txt.addEventListener(
+		'keyup', 				// eerste argument
+		handleKey,				// tweede argument: functieaanroep
+		false);					// derde argument
+};
+
+// Event handler
+function handleKey(e){
+	// 1. Bereken wat de huidige lengte is van de tekst in het invoerveld.
+	var lengte = document.getElementById('txtBericht').value.length;
+	
+	// 2. Check of dit is toegestaan.
+	if(lengte > aantalTekens){
+		// 2a. Nee. Toon een melding met het aantal tekens dat overschreden wordt.
+		var aantalTekensTeVeel = Math.abs(aantalTekens - lengte);
+		document.getElementById('txtControl').innerHTML= aantalTekensTeVeel + ' tekens te veel';
+			// (evt. extra: voeg CSS-klasse toe die visueel extra opvalt)
+	}
+	else{
+		// 2b. Ja. Laat zien hoeveel tekens nog over zijn.
+		var aantalTekensOver = Math.abs(lengte-aantalTekens); 
+		document.getElementById('txtControl').innerHTML = aantalTekensOver + ' tekens over';
+	}
+}
+
+</script>
+</head>
+<body>
+<form>
+<p>Typ een bericht. U mag maximaal 100 tekens gebruiken.</p>
+<!-- Extra oefening: maak de waarde '100'  ook dynamisch door deze waarde uit het script te lezen -->
+
+<p><textarea id="txtBericht" cols="40" rows="10">
+</textarea></p>
+<p id="txtControl"></p>
+</form>
+
+
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript keyword this</title>
+</head>
+<script>
+
+// functiedefinities en testen op waarde van 'this'
+
+function testFunction(){
+	// this verwijst naar object window()
+	console.log(this);
+	
+	function innerTest(){
+		console.log(this); // this verwijst OOK naar object window()
+	};
+	
+	innerTest();
+}
+
+// object definieren
+var myObject ={};
+myObject.test = function(){
+	console.log(this);	 // this verwijst naar myObject
+}
+
+// functies aanroepen
+testFunction();
+myObject.test();
+</script>
+<body>
+<h1>Test van this (zie console)</h1>
+</body>
+</html>

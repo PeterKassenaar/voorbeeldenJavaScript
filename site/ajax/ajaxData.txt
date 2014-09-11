@@ -1,0 +1,1 @@
+<h2>Deze tekst wordt via Ajax opgehaald</h2>

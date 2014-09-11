@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <!-- Eerste tabel -->
+    <table id="myTable" border="1">
+        <tr>
+            <td>Cel xxxx</td>
+            <td>Cel xxxx</td>
+            <td>Cel xxxx</td>
+            <td>Cel xxxx</td>
+        </tr>
+    </table>
+    
+    <!-- tweede tabel -->
+    <table id="myTable2" border="1">
+        <tr>
+            <td>Cel xxxx</td>
+            <td>Cel xxxx</td>
+            <td>Cel xxxx</td>
+            <td>Cel xxxx</td>
+        </tr>
+    </table>
+    <!-- Script -->
+    <script>
+        var table = document.querySelectorAll('table');
+        table[0].style.display = 'none'; // verberg de eerste tabel
+        console.log(table);
+
+        // schrijf alle properties van de tabel naar de console
+        for (var i in table[0]) {
+            console.log(i + '  : ' + table[i]); 
+        }
+    </script>
+</body>
+</html>

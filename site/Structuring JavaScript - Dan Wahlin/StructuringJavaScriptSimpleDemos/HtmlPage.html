@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/PrototypePattern.js"></script>
+    <script src="Scripts/RevealingModulePattern.js"></script>
+    <script src="Scripts/RevealingPrototypePattern.js"></script>
+    <script>
+
+        function start() {
+            alert('In the start');
+        }
+
+        window.onload = function () {
+            //Override start()
+            Truck.prototype.start = function () {
+                alert('my override');
+            };
+
+            var car = new Car('V8');
+            car.start();
+            car.stop();
+
+
+            var truck = new Truck('V12');
+            truck.start();
+            truck.stop();
+
+            var mv = new vehicle.MiniVan('V7');
+            mv.start();
+            mv.stop();
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

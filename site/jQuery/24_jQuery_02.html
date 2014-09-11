@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cursus JavaScript - jQuery template </title>
+<style>
+.voorwaarden{
+	width:450px;
+	min-height:150px;
+	background-color:#FFC;
+	border: 1px solid #888;
+}
+
+</style>
+<script src="../scripts/jquery-1.7.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	
+	// 'Algemene voorwaarden' tonen
+	$('#btnVoorwaarden').on('click', function(){
+		$('.voorwaarden').slideDown('slow', mijnFunctie);
+	});
+	// 'Algemene voorwaarden' verbergen
+	$('#btnVerbergVoorwaarden').on('click', function(){
+		$('.voorwaarden').slideUp('slow', function(){
+			$('#btnVoorwaarden').text('Toon voorwaarden opnieuw');
+		});
+	});
+
+
+});
+
+function mijnFunctie(){
+	$('#btnVoorwaarden').text('De voorwaarden zijn zichtbaar');
+	// Doe allerlei andere nuttige dingen, die pas mogen gebeuren als 
+	// de animatie gereed is.
+	}
+	
+
+
+</script>
+</head>
+
+<body>
+<button id="btnVoorwaarden">Toon voorwaarden</button>
+<button id="btnVerbergVoorwaarden">Verberg voorwaarden</button>
+<div class="voorwaarden">
+<h2>Algemene voorwaarden</h2>
+<p>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popul
+</p>
+</div>
+</body>
+</html>
+
+

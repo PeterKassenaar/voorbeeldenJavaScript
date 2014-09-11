@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript call/apply pattern</title>
+</head>
+
+<body>
+	<h1>JavaScript call/apply pattern</h1>
+
+	<p>Look in Dev Tools Console</p>
+	<!-- Script below here -->
+	<script>
+		function callApplyPatternFunction() {
+			// arguments is geen 'echte' array:
+			console.log('Array.isArray(arguments): ', Array.isArray(arguments)); // false
+
+			// met call/apply-pattern omzetten:
+			var args = Array.prototype.slice.call(arguments);
+
+			// resultaten loggen
+			console.log('Array.isArray(args): ', Array.isArray(args)); // true
+			console.log('aantal argumenten: ' + arguments.length);
+			console.log('Argumenten: ' + args);
+			console.log('Gesorteerde argumenten: ', args.sort());
+		}
+		//**************************
+		//
+		// Eerste functieaanroep
+		console.group('functie1');
+			callApplyPatternFunction('d', 'c', 'b', 'a');
+		console.groupEnd();
+
+		// Tweede functieaanroep
+		console.group('functie2');
+		callApplyPatternFunction('Hello', 'World', 15, {
+			name: 'Peter ',
+			woonplaats: 'Dieren'
+		});
+		console.groupEnd();
+	</script>
+</body>
+
+</html>
