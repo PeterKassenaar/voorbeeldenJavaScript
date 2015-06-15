@@ -6,32 +6,31 @@
 </head>
 
 <body>
-	<h1>Yindo boeken ophalen en tonen in de console</h1>
-	<div id="myDiv"></div>
-	
-	<script>
-		// 1. callback function
-		function callbackHilversum(data) {
-			console.log(data);
-			
-			
-			//var content = JSON.parse(data);
-				// over het object lopen en tonen in de UI
-				for (var i in data){
-					myDiv.innerHTML += '<strong> Titel: ' + i + '</strong>: ' + data[i].title + '<br />';
-				}
-		}
-		
-		// 2. Yindo books URL
-		var yindoUrl = 'http://api.yindo.com/api/book/new/10?callback=callbackHilversum';
+<h1>Yindo boeken ophalen en tonen in de console</h1>
 
-		// of: weather service aanroepen
-		var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Groningen,nl&lang=nl&units=metric&callback=callbackYindo';
-		
-		// 3. create script tag dynamically and add to document header
-		var script = document.createElement('script');
-		script.src = yindoUrl;
-		document.head.appendChild(script);
-	</script>
+<div id="myDiv"></div>
+
+<script>
+	// 1. callback function
+	function callbackFunctie(data) {
+		console.log(data);
+		//var content = JSON.parse(data);
+		// over het object lopen en tonen in de UI
+		for (var i in data) {
+			myDiv.innerHTML += '<strong> Titel: ' + i + '</strong>: ' + data[i].title + '<br />';
+		}
+	}
+
+	// 2. Yindo books URL
+	var yindoUrl = 'http://api.yindo.com/api/book/new/10?callback=callbackFunctie';
+
+	// of: weather service aanroepen
+	var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Groningen,nl&lang=nl&units=metric&callback=callbackFunctie';
+
+	// 3. create script tag dynamically and add to document header
+	var script = document.createElement('script');
+	script.src = yindoUrl;
+	document.head.appendChild(script);
+</script>
 </body>
 </html>

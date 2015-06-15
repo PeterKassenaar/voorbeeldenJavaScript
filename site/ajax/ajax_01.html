@@ -1,51 +1,44 @@
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Cursus JavaScript - Basic Ajax </title>
-<script>
-window.onload=function(){
-	
-	document.getElementById('btnRequest').addEventListener('click', handleClick);
+	<meta charset="utf-8">
+	<title>Cursus JavaScript - Basic Ajax </title>
+	<script>
+		window.onload = function () {
+			document.getElementById('btnRequest').addEventListener('click', handleClick);
+		};
 
-}
+		// de klik op de knop omzetten in een Ajax-request
+		function handleClick(event) {
+			// 1. variabelen instellen
+			var myDiv = document.getElementById('myDiv');
+			var request = new XMLHttpRequest();
+			//var method = 'GET';
+			//var url = 'ajaxData.txt';
+			// request.open(method, url);
+			request.open('GET', 'ajaxData.txt');
 
+			request.setRequestHeader('Content-type', 'text/plain');
 
+			// 2. callback-functie instellen
+			request.onreadystatechange = function () {
 
+				// testen of request compleet is en succesvol
+				if (request.readyState == 4 && request.status == 200) {
+					// Div op de pagina leegmaken
+					myDiv.innerHTML = '';
 
+					// voor nu: toon de response in het document
+					myDiv.innerHTML += request.responseText;
+				}
+			}
 
-// de klik op de knop omzetten in een Ajax-request
-function handleClick(event){
-	// 1. variabelen instellen
-	var myDiv = document.getElementById('myDiv');
-	var request = new XMLHttpRequest();
-	//var method = 'GET';
-	//var url = 'ajaxData.txt';
-	// request.open(method, url);
-	request.open('GET', 'ajaxData.txt');
-	
-	request.setRequestHeader('Content-type', 'text/plain');
-	
-	// 2. callback-functie instellen
-	request.onreadystatechange = function(){
-		
-		// testen of request compleet is en succesvol
-		if(request.readyState == 4 && request.status == 200){
-		    // Div op de pagina leegmaken
-		    myDiv.innerHTML = '';
-
-		    // voor nu: toon de response in het document
-			myDiv.innerHTML += request.responseText;
-		}
-	}
-	
-	// 3. request verzenden
-	request.send();
-}// end eventHandler
+			// 3. request verzenden
+			request.send();
+		}// end eventHandler
 
 
-
-</script>
+	</script>
 </head>
 
 <body>
