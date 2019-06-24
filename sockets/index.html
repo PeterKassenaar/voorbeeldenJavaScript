@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket example</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <input class="input-lg" type="text" id="txtMessage" placeholder="message...">
+            <button class="btn btn-primary" id="btnSend">Send Message</button>
+            <div id="messages"></div>
+        </div>
+        <div class="col-md-6">
+            <h1>Receiving random numbers from websocket.</h1>
+            <button class="btn btn-danger" id="btnDisconnect">Disconnect</button>
+
+            <ol id="data"></ol>
+        </div>
+    </div>
+</div>
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    //************
+    // Creating the connection to random number generator
+    //************
+    var url = "ws://localhost:3006";
+    var connection = new WebSocket(url);
+
+    connection.addEventListener('message', function (event) {
+        var li = $('<li></li>').append(event.data);
+        var $data = $('#data');
+        $data.append(li);
+    });
+
+    //************
+    // Creating the connection to chatbox
+    //************
+
+    var urlMsg = "ws://localhost:3005";
+    var connectionMsg = new WebSocket(urlMsg);
+    connectionMsg.addEventListener('message', function (data) {
+        $('#messages').append(data.data + '<br>');
+    });
+
+
+    //************
+    // Helper functions
+    //************
+
+    // Send message
+    $('#btnSend').on('click', function () {
+        var msg = $('#txtMessage').val();
+        connectionMsg.send(JSON.stringify(msg));
+    });
+
+    // Disconnect from socket server
+    $('#btnDisconnect').on('click', function () {
+        connection.close();
+        $(this).hide();
+        // Note: it is NOT easy to connect to the server again. You would
+        // need to re-create the complete socket connection and add event listeners again.
+        // For instance by wrapping the creation of the socket in a function.
+        // See for example https://stackoverflow.com/questions/13797262/how-to-reconnect-to-websocket-after-close-connection
+    })
+
+</script>
+</body>
+</html>

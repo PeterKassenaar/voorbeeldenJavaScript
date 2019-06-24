@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Mijn kleine library</title>
@@ -9,7 +9,7 @@
 	<script>
 		// Mijn helper library
 		var $ = (function () {
- 
+
 			// private
 			var get = function(_el){
 				return	document.querySelector(_el);
@@ -31,12 +31,12 @@
 				show: show
 			};
 		})(); // <=== Iffy notatie
-		
+
 		var kop = $.get('#koptekst');
 		//var x = new $();// onzin
-		
 
-	
+
+
 		console.log(kop);
 		// koptekst na 2,5 seconden verbergen.
 		setTimeout(function(){

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-	<title></title>
+	<title>JavaScript Chaining</title>
 
 	<script>
 		// Chaining Design Pattern
@@ -13,20 +13,17 @@
 			this.add = function (a) {
 				totaal += a;
 				console.log('optellen: ' + a + ', totaal is nu ' + totaal);
-
-
-				//return this; // return 'this' om chaining mogeljk te maken.
-			}
+				// return this; // return 'this' om chaining mogeljk te maken.
+			};
 			this.subtract = function (a) {
 				totaal -= a;
 				console.log('aftrekken: ' + a + ', totaal is nu ' + totaal);
-
-
-				//return this; // return 'this' om chaining mogeljk te maken.
+				// return this; // return 'this' om chaining mogeljk te maken.
 			}
-		}
+		};
 
 		var mijnCalc = new Calculator();
+
 		// chaining
 		mijnCalc.add(4).add(5).add(10).subtract(5);
 

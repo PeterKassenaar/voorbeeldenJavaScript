@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 16px;;
+        }
+
+        button {
+            width: 80px;
+            height: 38px;
+        }
+    </style>
+</head>
+<body>
+<h1>Async functies en callbacks</h1>
+<button id="btnAsync">Async</button>
+<div id="divFeedback"></div>
+<h2 id="divResult"></h2>
+<script>
+    document.getElementById('btnAsync').addEventListener('click', function () {
+        // ********* Async zonder callback - foutieve uitvoer
+        // 1.
+       var totaal = asyncFn('divFeedback', 10);
+       document.getElementById('divResult').innerHTML = 'Klaar! Het totaal is: ' + totaal;
+
+       function asyncFn(el, num) {
+           setTimeout(function () {
+               // tel alle getallen van 0 tot num bij elkaar op.
+               var totaal = 0;
+               for (var i = 0; i <= num; i++) {
+                   totaal += i;
+               }
+               document.getElementById(el).innerHTML = "Async-functie gereed. Totaal: " + totaal;
+               return totaal;
+           }, 3000); // simuleer vertraging van 3 seconden.
+       };
+
+        // ******* Async met callback - de correcte manier
+        // 2.
+        // functie aanroepen / invoken
+        // asyncFn('divFeedback', 100, showResult);
+        // function showResult (totaal) {
+        //     document.getElementById('divResult').innerHTML =
+        //             'Klaar! Het totaal is: ' + totaal;
+        // }
+        //
+        // function asyncFn(el, num, callback) {
+        //     document.getElementById(el).innerHTML = 'even geduld...';
+        //     setTimeout(function () {
+        //         // tel alle getallen van 0 tot num bij elkaar op.
+        //         var totaal = 0;
+        //         for (var i = 0; i <= num; i++) {
+        //             totaal += i;
+        //         }
+        //         document.getElementById(el).innerHTML =
+        //                 "Async-functie gereed. Totaal: " + totaal;
+        //         callback(totaal); // callbackfunctie aanroepen, met juiste resultaat als parameter.
+        //     }, 3000); // simuleer vertraging van 3 seconden.
+        // };
+    });
+</script>
+</body>
+</html>
