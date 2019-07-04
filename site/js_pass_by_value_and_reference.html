@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pass by value & pass by reference</title>
+</head>
+<body>
+<h2>Pass by value & pass by reference</h2>
+See Dev Tools Console
+<script>
+    //**************
+    // Pass by Value
+    //**************
+    // 1. define function
+    function square(x) {
+        const value = x * x
+        console.log('square: x * x =', value);
+    }
+
+    // 2. call function
+    const y = 5;
+    square(y);
+    console.log('y: ', y); // no change - y is passed by value b/c it is a primitive value
+
+    //**************
+    // Pass by Reference
+    //**************
+    // 3. define function
+    function turnOn(machine) {
+        machine.isOn = true
+    }
+
+    const computer = {
+        processor: 'Intel I7',
+        isOn: false
+    };
+    // 4. call function with object
+    turnOn(computer);
+    console.log('computer.isOn : ', computer.isOn); // true, b/c objects are passed by reference
+
+
+</script>
+</body>
+</html>

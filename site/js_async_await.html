@@ -41,14 +41,38 @@
 
 	// more examples/credits: https://alligator.io/js/async-functions/
 
-	// 3. With a Fetch-example, from previous exercise
+
+	// 3a. With Fetch example, in ES5-notation
+	async function fetchCountries(){
+		const response = await fetch('https://restcountries.eu/rest/v2/all')
+		return  response.json()
+	}
+	// Call the async function function.
+	fetchCountries().then(function (result) {
+		console.log(result); // array of 250 countries
+	});
+	//**********************
+	// Workshop: copy two functions above to http://www.typescriptlang.org/index.html.
+	// Option 'Playground'
+	// Look at the different notation in different targets:
+	// - ES2017 (default, no change)
+	// - ES2016 (some changes)
+	// - ES5 (a *lot* of changes, but a perfect example that all modern
+	//		code can be downgraded to old-skool JS code
+	//**********************
+
+
+	//**********************
+	// 3. With a Fetch-example, from previous exercise,
+	// Same, but modern ES6-notation
+	//**********************
 	// some constants
 	const url = 'https://restcountries.eu/rest/v2/all';
 	const myCountries = fetch(url);
 	const listCountries = document.querySelector('#listCountries');
 
 	//**********************
-	// Promise-code, with fetch
+	// Promise-code, with fetch, in modern notation
 	//**********************
 	const onFetch = () => {
 		setTimeout(() => {
