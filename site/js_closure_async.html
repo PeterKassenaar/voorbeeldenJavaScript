@@ -10,56 +10,56 @@
 		// Extracted from: http://www.boekenwolk.nl/lees.aspx?ean=9789081151115
 		// Als voorbeeld van een closure, waarbij het anders fout zou gaan.
 		//
-		// LET OP: dit is **GEEN** functionele pagina. 
+		// LET OP: dit is **GEEN** functionele pagina.
 		// Hij bevat alleen voorbeeldcode die zonder context niet werkt.
 
 		//***************************
 		// 1. Oorspronkelijke poging
 		//***************************
-		// Load initial data: de getoonde pagina en de vorige- en volgende pagina. 3 in totaal.					
+		// Load initial data: de getoonde pagina en de vorige- en volgende pagina. 3 in totaal.
 		var index = -1;
 		BW.pagesHaveLoaded = false;
 
 		// for-lus, ophalen 3 pagina's.
-		for (i = 0; i < 3; i++) {
-			page = i == 0 ? BW.slides.length - 1 : i - 1; // centrale en vorige/volgende pagina bepalen
-
-			// pagina ophalen
-			$.ajax({
-				type: 'GET',
-				url: BW.slides[page].src,
-
-				// De functie retourneert een png als bitmapstring. Deze toevoegen aan element in de caroussel
-				success: function (yindoPermission) {
-					el = document.createElement('img');
-					el.className = 'loading';
-					el.src = 'data:image/png;base64,' + yindoPermission.pageBitmapString;
-					el.onload = function () {
-						this.className = '';
-						this.className = BW.deviceOrientation;
-						$('#loadingIndicator').hide();
-						// <snip>
-					};
-					BW.gallery.masterPages[i].appendChild(el); // <=== HIER ging het fout. 
-					index++;
-				}
-			});
-		}
+		// for (i = 0; i < 3; i++) {
+		// 	page = i == 0 ? BW.slides.length - 1 : i - 1; // centrale en vorige/volgende pagina bepalen
+		//
+		// 	// pagina ophalen
+		// 	$.ajax({
+		// 		type: 'GET',
+		// 		url: BW.slides[page].src,
+		//
+		// 		// De functie retourneert een png als bitmapstring. Deze toevoegen aan element in de caroussel
+		// 		success: function (yindoPermission) {
+		// 			el = document.createElement('img');
+		// 			el.className = 'loading';
+		// 			el.src = 'data:image/png;base64,' + yindoPermission.pageBitmapString;
+		// 			el.onload = function () {
+		// 				this.className = '';
+		// 				this.className = BW.deviceOrientation;
+		// 				$('#loadingIndicator').hide();
+		// 				// <snip>
+		// 			};
+		// 			BW.gallery.masterPages[i].appendChild(el); // <=== HIER ging het fout.
+		// 			index++;
+		// 		}
+		// 	});
+		// }
 
 		//***************************
 		// 2. Verbeterde poging, nu met closure
-		//***************************		
-		// Load initial data: de getoonde pagina en de vorige- en volgende pagina. 3 in totaal.					
+		//***************************
+		// Load initial data: de getoonde pagina en de vorige- en volgende pagina. 3 in totaal.
 		var index = -1;
 		BW.pagesHaveLoaded = false;
 
 		// for-lus, ophalen 3 pagina's.
 		for (i = 0; i < 3; i++) {
 			// JavaScript-closure, om te voorkomen dat i een andere waarde heeft als de bitmapstring is
-			// opgehaald door de AJAX-call (en dus de pagina's in verkeerde volgorde in de SwipeView-array 
-			// terechtkomen). Credits: http://stackoverflow.com/questions/2405064/ajax-call-in-for-loop-wont-return-values-to-correct-array-positions				
+			// opgehaald door de AJAX-call (en dus de pagina's in verkeerde volgorde in de SwipeView-array
+			// terechtkomen). Credits: http://stackoverflow.com/questions/2405064/ajax-call-in-for-loop-wont-return-values-to-correct-array-positions
 			(function (i) {
-				page = i == 0 ? BW.slides.length - 1 : i - 1;
+				page = i === 0 ? BW.slides.length - 1 : i - 1;
 				$.ajax({
 					type: 'GET',
 					url: BW.slides[page].src,
@@ -78,7 +78,7 @@
 					}
 				});
 
-			})(i); // Nieuwe scope creeren door de functie aan te roepen met huidige i als parameter. 
+			})(i); // Nieuwe scope creeren door de functie aan te roepen met huidige i als parameter.
 		};
 
 	</script>

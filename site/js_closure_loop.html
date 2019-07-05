@@ -14,55 +14,56 @@
     </ul>
 </div>
 <script>
-    // ********** WRONG RESULT *******************
-    // 1. define some function
-    function handleClick() {
-    	// 2. get all links
-    	var links = document.getElementsByTagName('a');
+	// ********** WRONG RESULT *******************
+	// 1. define some function
+	// function handleClick() {
+	// 	// 2. get all links
+	// 	var links = document.getElementsByTagName('a');
+	//
+	// 	// 3. get link count
+	// 	var linkCount = links.length;
+	// 	for (var i = 0; i < linkCount; i++) {
+	// 		links[i].addEventListener('click', function (e) {
+	// 			alert('You have clicked link number ' + (i + 1));
+	// 		}, false);
+	// 	}
+	// }
+	// handleClick();
 
-    	// 3. get link count
-    	var linkCount = links.length;
-    	for (var i = 0; i < linkCount; i++) {
-    		links[i].addEventListener('click', function (e) {
-    			alert('You have clicked link number ' + (i + 1));
-    		}, false);
-    	}
-    }
-    handleClick();
+	// // ********** SOLUTION 1. Use IFEE *******************
+	// function handleClick() {
+	// 	// 1. get all links
+	// 	var links = document.getElementsByTagName('a');
+	// 	// 2. get link count
+	// 	var linkCount = links.length;
+	// 	for (var i = 0; i < linkCount; i++) {
+	// 		(function (index) {
+	// 			// 3a. Inside this funciton, i is know as 'index'
+	// 			links[index].addEventListener('click', function (e) {
+	// 				alert('You have clicked the link ' + (index + 1));
+	// 			}, false);
+	//
+	// 		})(i); // 3. closure of the function, called with IFEE-notation
+	// 	}
+	// }
+	// handleClick();
 
-    // // ********** SOLUTION 1. Use IFEE *******************
-    // function handleClick() {
-    // 	// 1. get all links
-    // 	var links = document.getElementsByTagName('a');
-    // 	// 2. get link count
-    // 	var linkCount = links.length;
-    // 	for (var i = 0; i < linkCount; i++) {
-    // 		(function (index) {
-    // 			// 3a. Inside this funciton, i is know as 'index'
-    // 			links[index].addEventListener('click', function (e) {
-    // 				alert('You have clicked the link ' + (index + 1));
-    // 			}, false);
-    //
-    // 		})(i); // 3. closure of the function, called with IFEE-notation
-    // 	}
-    // }
-    // handleClick();
 
-    // ********** SOLUTION 2. Use let keyword *******************
-    // function handleClick() {
-    //     // 1. get all links
-    //     const links = document.getElementsByTagName('a');
-    //     // 2. get link count
-    //     const linkCount = links.length;
-    //     for (let i = 0; i < linkCount; i++) {
-    //         // 3. B/c of let, i is redeclared on every iteration
-    //         links[i].addEventListener('click', function (e) {
-    //             alert('You have clicked link number ' + (i + 1));
-    //         }, false);
-    //     }
-    // }
-    //
-    // handleClick();
+	// ********** SOLUTION 2. Use let keyword *******************
+	function handleClick() {
+		// 1. get all links
+		const links = document.getElementsByTagName('a');
+		// 2. get link count
+		const linkCount = links.length;
+		for (let i = 0; i < linkCount; i++) {
+			// 3. B/c of let, i is redeclared on every iteration
+			links[i].addEventListener('click', function (e) {
+				alert('You have clicked link number ' + (i + 1));
+			}, false);
+		}
+	}
+
+	handleClick();
 </script>
 </body>
 </html>

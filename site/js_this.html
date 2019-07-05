@@ -10,62 +10,70 @@
 <!--<a href="#" class="click">Click this link</a>-->
 
 <script>
-    // Invoking of the 'this' keyword depends on *who* is invoking
-    // 1.  Via  function
-    function myFunction() {
-        console.log('Function :::', this);
-    }
-    myFunction(); // The window is invoking the function, so 'this' points to Window object.
+	// Invoking of the 'this' keyword depends on *who* is invoking
+	// 1.  Via  function
+	function myFunction() {
+		console.log('Function :::', this);
+	}
 
-    // 2. Via Object
-    // const myObj = {
-    //     myMethod() {
-    //         console.log('Object:::', this);
-    //     }
-    // };
-    // myObj.myMethod(); // The object is invoking the function, so 'this' points to the object 'myObj'.
+	myFunction(); // The window is invoking the function, so 'this' points to Window object.
 
-    // 3. Via class
-    // class MyClass {
-    //     name = 'Peter';
-    //     myMethod() {
-    //         console.log('Class:::', this);
-    //     }
-    //
-    //     startTimer() {
-    //         setTimeout( ()=> {
-    //             console.log(' Timer vanuit de class:::', this);
-    //         }, 1000);
-    //     }
-    // }
-    //
-    // const myClass = new MyClass();
-    // myClass.myMethod();
-    // myClass.startTimer();
+	// 2. Via Object
+	const myObj = {
+		myMethod() {
+			console.log('Object:::', this);
+		}
+	};
+	myObj.myMethod(); // The object is invoking the function, so 'this' points to the object 'myObj'.
 
-    // const x = myClass.myMethod();
-    // x(); // where does 'this' point at??
+	// 3. Via class
+	class MyClass {
 
-    //**********************************************
-    // TYPESCRIPT ONLY!!
-    // 4. Element in page, a clickable <a href>
-    //**********************************************
-    // const elem = document.querySelector('.click');
+		name = 'Pepijn';
+		constructor(props) {
+			this.name = 'Peter';
+		}
 
-    // The 'this' keyword is now explicitely typed, because of the key "noImplicitThis" in the
-    // tsconfig.json. So this looks like two arguments, but it is actually just one. The this
-    // keyword as first parameter is just a way to notate this. The 'e' is still the first argument.
-    // Now we can type 'this' as any HTML-DOM element.
-    // const handleClick = function(this: HTMLAnchorElement, e: Event) {
-    //     e.preventDefault();
-    //     console.log(this); // <a href="...">...</a>
-    //     console.log(
-    //         'href and classes of this link:::',
-    //         this.href,
-    //         this.className
-    //     );
-    // };
-    // elem.addEventListener('click', handleClick, false);
+
+		myMethod() {
+			console.log('Class:::', this);
+		}
+
+		startTimer() {
+			// var self = this; // 'caching' van this
+			setTimeout(()=>  {
+				console.log(' Timer vanuit de class:::', this);
+			}, 1000);
+		}
+	}
+
+	const myClass = new MyClass();
+	myClass.myMethod();
+	myClass.startTimer();
+
+	// const x = myClass.myMethod();
+	// x(); // where does 'this' point at??
+
+	//**********************************************
+	// TYPESCRIPT ONLY!!
+	// 4. Element in page, a clickable <a href>
+	//**********************************************
+	// const elem = document.querySelector('.click');
+
+	// The 'this' keyword is now explicitely typed, because of the key "noImplicitThis" in the
+	// tsconfig.json. So this looks like two arguments, but it is actually just one. The this
+	// keyword as first parameter is just a way to notate this. The 'e' is still the first argument.
+	// Now we can type 'this' as any HTML-DOM element.
+	// const handleClick = function(this: HTMLAnchorElement, e: Event) {
+	//     e.preventDefault();
+	//     console.log(this); // <a href="...">...</a>
+	//     console.log(
+	//         'href and classes of this link:::',
+	//         this.href,
+	//         this.className
+	//     );
+	// };
+	// elem.addEventListener('click', handleClick, false);
 </script>
 </body>
 </html>

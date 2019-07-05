@@ -6,6 +6,7 @@
 </head>
 <body>
 	<h1 id="koptekst">Koptekst</h1>
+	<h1 id="someElement" hidden>Een andere Koptekst</h1>
 	<script>
 		// Mijn helper library
 		var $ = (function () {
@@ -17,10 +18,12 @@
 
 			var hide = function(_el){
 				document.querySelector(_el).style.display='none';
+				return this;
 			};
 
 			var show = function (_el) {
 				document.querySelector(_el).style.display = 'block';
+				return this;
 			};
 
 
@@ -33,7 +36,7 @@
 		})(); // <=== Iffy notatie
 
 		var kop = $.get('#koptekst');
-		//var x = new $();// onzin
+		// var x = new $();// onzin
 
 
 
@@ -41,7 +44,12 @@
 		// koptekst na 2,5 seconden verbergen.
 		setTimeout(function(){
 			$.hide('#koptekst');
+			$.show('#someElement');
 		}, 2500);
+
+		setTimeout(function(){
+			$.show('#koptekst');
+		}, 5000);
 	</script>
 </body>
 </html>
