@@ -1,0 +1,72 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> JavaScript - Adding items to the DOM </title>
+    <style>
+        .opmaak {
+            border: 1px solid #999;
+            padding: 10px;
+            margin: 10px;
+            background-color: #CC9933;
+        }
+
+        .grijs {
+            background-color: #ccc;
+        }
+
+        .geel {
+            background-color: #FFC;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h2>List of vehicles</h2>
+    <input type="text" id="made" placeholder="made">
+    <input type="text" id="model" placeholder="model">
+    <input type="text" id="price" placeholder="price">
+    <button id="btnAddVehicle">Add</button>
+    <ul id="listVehicles"></ul>
+</div>
+<script>
+    // 1. Custom array with data. This can come from a database of course
+    var vehicles = [
+        {made: 'Toyota', model: 'Prius', 'price': 34000},
+        {made: 'Peugeot', model: '308', 'price': 26750},
+        {made: 'Mercedes-AMG', model: 'A 35', 'price': 53900},
+    ];
+    // 2. Show initial list of vehicles
+    showVehicles();
+    // 3. add event listener function to button
+    document.querySelector('#btnAddVehicle').addEventListener('click', function () {
+        // 3a. create new object and read content of textboxes
+        // NOTE: No validation yet.
+        var newVehicle = {
+            made: document.querySelector('#made').value,
+            model: document.querySelector('#model').value,
+            price: document.querySelector('#price').value,
+        };
+        // 3b. add new vehicle to the array
+        vehicles.push(newVehicle);
+        // 3c. show new list of vehicles
+        showVehicles();
+        // 3d. reset text boxes
+        document.querySelector('#made').value = '';
+        document.querySelector('#model').value = '';
+        document.querySelector('#price').value = '';
+    });
+
+    // 4. function to render the list of vehicles
+    function showVehicles() {
+        var list = document.querySelector('#listVehicles'); // cache list in variable
+        list.innerHTML = ''; // reset list
+        vehicles.forEach(function (vehicle) {
+            list.innerHTML += '<li>' + vehicle.made + ' ' + vehicle.model + ' (EUR ' + vehicle.price + ')</li>';
+        })
+    }
+</script>
+
+</body>
+</html>
+

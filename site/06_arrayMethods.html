@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Methods voor arrays</title>
+	<title>Array methods</title>
 	<script>
 		// Verschillende notatiewijzen voor arrays
 
 		// 1. Array definieren
-		var mijnArray = ['druif', 'Banaan', 'peer', 'appel' ];
-		
+		var mijnArray = ['grape', 'Banana', 'Pear', 'Apple', 'apricot' ];
+
 
 		// join()
 		var fruit = mijnArray.join('-----');
@@ -47,10 +47,35 @@
 		//mijnArray3 = mijnArray3.concat(mijnArray, mijnArray2);
 		//console.log(mijnArray3);
 
+		// **************************************
+
+		// .forEach()
+		// iterate over the array, perform a function with each element:
+		mijnArray.forEach(function (element, index) {
+			console.log('This is element number ', index, '  : ', element);
+		});
+
+
+		// .filter()
+		// Filter out all elements that match a certain criteria. Return
+		// a new array
+		var filteredArray = mijnArray.filter(function (item) {
+			return item.toLowerCase().startsWith('a');
+		});
+		console.log('filtered array: ' , filteredArray); // ["Apple", "apricot"]
+
+
+		// .map()
+		// Apply a function/transformation to each element in the array.
+		// Also returns a new array.
+		var mappedArray = mijnArray.map(function (item) {
+			return 'I *love* '+ item.toUpperCase();
+		});
+		console.log('mapped array: ' , mappedArray);
 
 	</script>
 </head>
 <body>
-	<h1>Array Methods - kijk in Dev Tools Console</h1>
+	<h1>Array Methods - Look in Dev Tools Console</h1>
 </body>
 </html>

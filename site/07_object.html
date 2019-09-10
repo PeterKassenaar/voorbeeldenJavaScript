@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Objecten</title>
+	<title>Objects</title>
 	<script>
 
 
 		// Een object maken met ingekapselde method/function
 
-		// 1. Traditionele notatie
+		// 1. Traditional notation - not used very often anymore
 		var o = new Object();
 		o.breedte = 5;
 		o.lengte = 4;
@@ -27,32 +27,43 @@
 				return this.breedte * this.lengte;
 			},
 			// hoogte: 10
-		}// einde object
+		}; // einde object
 		console.log(p.calc());
 
-
-
-		var p = (function () {
-			// Dit zijn de PRIVATE variabelen
-			var _breedte = 6;
-			var _lengte = 7;
-			var _hoogte = 10;
-			var _calc = function () {
-				return _lengte * _breedte;
+		var person = {
+			name: 'Peter',
+			email: 'peter@peter.com',
+			age: 32,
+			sayMsg: function (message) {
+				return this.name + ' says ' + message;
 			}
+		};
 
-			var _inhoud = function () {
-				return _lengte * _breedte * _hoogte;
-			}
 
-			// DIT is de publieke API van deze functie 
-			return {
-				calc: _calc,
-				inhoud: _inhoud,
-				lengte: _lengte
-			}
 
-		})();
+		// An object as an Immediately Invoked Function Expression (IIFE)
+		// This is a *design pattern*.
+		// var p = (function () {
+		// 	// Dit zijn de PRIVATE variabelen
+		// 	var _breedte = 6;
+		// 	var _lengte = 7;
+		// 	var _hoogte = 10;
+		// 	var _calc = function () {
+		// 		return _lengte * _breedte;
+		// 	}
+		//
+		// 	var _inhoud = function () {
+		// 		return _lengte * _breedte * _hoogte;
+		// 	}
+		//
+		// 	// DIT is de publieke API van deze functie
+		// 	return {
+		// 		calc: _calc,
+		// 		inhoud: _inhoud,
+		// 		lengte: _lengte
+		// 	}
+		//
+		// })();
 
 		console.log(p.calc());
 		console.log(p.inhoud());
