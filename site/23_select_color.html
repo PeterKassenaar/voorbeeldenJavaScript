@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript - events </title>
+    <style>
+
+    </style>
+    <script>
+		// Workshop: select a color from a dropdown list. A paragraph gets that color
+
+		// variables:
+		var colours = ['red', 'green', 'blue', 'black', 'rebeccapurple', 'darkgreen']; // de drempelwaarde
+		var colourText = '---not set---';
+
+		window.onload = function () {
+			// 1. Get the dropdown list
+			var colourList = document.getElementById('colourList');
+			// 2. Add colors to the list
+			colours.forEach(function (color) {
+				var colourItem = '<option value="' + color + '">' + color + "</option>";
+				colourList.innerHTML += colourItem;
+			});
+			// 3. Add eventListener and set up the default text.
+			colourList.addEventListener('change', pickColor);
+			document.getElementById('colourSelection').innerHTML = colourText;
+
+			//**************
+			// Option: use the default HTML color picker
+			//**************
+			// document.getElementById('colourPicker').addEventListener('change', pickColor)
+		};
+
+		// 4. Event handler. The 'change' event is passed in as a parameter.
+		// We can read the picked color from that event.
+		function pickColor(event) {
+			// a. The picked color is inside the value event.target.value
+			var currentColor = event.target.value;
+			console.log('You picked ::', currentColor);
+			document.getElementById('txtColour').style.color = currentColor;
+			document.getElementById('colourSelection').innerHTML = currentColor;
+		}
+
+    </script>
+</head>
+<body>
+<form>
+    <h2>The JavaScript colour picker</h2>
+    <p>
+        <label for="colourList"> Pick a colour. The text below is assigned this colour</label>
+    </p>
+    <!-- Extra exercise: create an extra dropdown list, to change
+        the foreground colour and background colour. -->
+
+    <div>
+        <!--        Manually filled list (see code)-->
+        <select id="colourList">
+            <option value="-1">Pick a color</option>
+        </select>
+
+        <!--        Default HTML color picker (different results in different browsers)-->
+        <!--        <input type="color" id="colourPicker">-->
+    </div>
+    <h3>Your choice: <span id="colourSelection"></span></h3>
+    <div id="txtColour" style="font-size: 26px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus consequatur delectus deleniti, earum harum
+        impedit ipsum minima molestiae mollitia neque nesciunt nobis nostrum optio provident quod tenetur ut voluptate.
+    </div>
+</form>
+
+
+</body>
+</html>
+

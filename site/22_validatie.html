@@ -1,53 +1,53 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Cursus JavaScript - events </title>
-<style>
+    <meta charset="utf-8">
+    <title>JavaScript - events </title>
+    <style>
 
-</style>
-<script>
-// Oefening: Validatie. Een textarea mag niet meer dan xx-tekens bevatten.
-// variabelen
-var aantalTekens = 100; // de drempelwaarde 
+    </style>
+    <script>
+		// Workshop: Validation. A textbox cannot contain over xx characters.
+		// variables
+		var numChars = 100; // de drempelwaarde
 
-window.onload=function(){
-	var txt = document.getElementById('txtBericht');
-	txt.addEventListener(
-		'keyup', 				// eerste argument
-		handleKey,				// tweede argument: functieaanroep
-		false);					// derde argument
-};
+		window.onload = function () {
+			var txt = document.getElementById('txtBericht');
+			txt.addEventListener(
+				'keyup', 				// first argument
+				handleKey,				// second argument: function invoking
+				false);					// third argument - optional (you can leave it out)
+		};
 
-// Event handler
-function handleKey(e){
-	// 1. Bereken wat de huidige lengte is van de tekst in het invoerveld.
-	var lengte = document.getElementById('txtBericht').value.length;
-	
-	// 2. Check of dit is toegestaan.
-	if(lengte > aantalTekens){
-		// 2a. Nee. Toon een melding met het aantal tekens dat overschreden wordt.
-		var aantalTekensTeVeel = Math.abs(aantalTekens - lengte);
-		document.getElementById('txtControl').innerHTML= aantalTekensTeVeel + ' tekens te veel';
-			// (evt. extra: voeg CSS-klasse toe die visueel extra opvalt)
-	}
-	else{
-		// 2b. Ja. Laat zien hoeveel tekens nog over zijn.
-		var aantalTekensOver = Math.abs(lengte-aantalTekens); 
-		document.getElementById('txtControl').innerHTML= aantalTekensOver + ' tekens over';
-	}
-}
+		// Event handler
+		function handleKey(e) {
+			// 1. Calculate the current length of the text in the input field.
+			var allowedLength = document.getElementById('txtBericht').value.length;
 
-</script>
+			// 2. Check if this is allowed.
+			if (allowedLength > numChars) {
+				// 2a. No. Show a message with the number of characters that are exceeded.
+				var numCharsTooMany = Math.abs(numChars - allowedLength);
+				document.getElementById('txtControl').innerHTML = numCharsTooMany + ' tekens te veel';
+				// (possible additional: add a CSS-class that makes a visual distinction)
+			} else {
+				// 2b. Yeah. Let's see how many characters are left.
+				var numCharsLeft = Math.abs(allowedLength - numChars);
+				document.getElementById('txtControl').innerHTML = numCharsLeft + ' chars left';
+			}
+		}
+
+    </script>
 </head>
 <body>
 <form>
-<p>Typ een bericht. U mag maximaal 100 tekens gebruiken.</p>
-<!-- Extra oefening: maak de waarde '100'  ook dynamisch door deze waarde uit het script te lezen -->
+    <p>Type a message. You may use up to 100 characters.</p>
+    <!-- Extra exercise: also make the value '100' dynamic by
+        reading this value from a script or input control -->
 
-<p><textarea id="txtBericht" cols="40" rows="10">
+    <p><textarea id="txtBericht" cols="40" rows="10">
 </textarea></p>
-<p id="txtControl"></p>
+    <p id="txtControl"></p>
 </form>
 
 
