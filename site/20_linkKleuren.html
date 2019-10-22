@@ -9,7 +9,7 @@
 */
 a{
 	font-size: x-large;
-	font-weight: bold;	
+	font-weight: bold;
 }
 </style>
 <script>
@@ -23,19 +23,19 @@ window.onload=function(){
 	btn.addEventListener(
 		'click', 				// eerste argument
 		changeLinks,			// tweede argument: functieaanroep
-		false);					// derde argument
+		false);					// derde argument, optional
 };
 
 // Event handler
 function changeLinks(e){
 	var links = document.getElementsByTagName('a'); // links bevat een NodeList-object (zie p. 367, boek)
-	
+
 	// Loop over alle elementen in de NodeList
 	for(var i = 0 ; i < links.length; i++)
 	{
 		links[i].style.backgroundColor = linkColors[currentColor];
 	}
-	
+
 	// test of de huidige kleur binnen bereik van array valt. Anders: reset.
 	if(++currentColor >= linkColors.length){
 		currentColor = 0;
